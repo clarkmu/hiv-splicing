@@ -1,1 +1,8 @@
 .DS_STORE
+
+# Added by cargo
+
+/target
+/input
+
+*.fasta

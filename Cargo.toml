@@ -1,0 +1,15 @@
+[package]
+name = "hiv-splicing"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bio = "2.0.3"
+zip-extensions = "0.8.0"
+flate2 = "1.0.30"
+tar = "0.4.41"
+rayon = "1.10.0"
+anyhow = "1.0.86"
+peak_alloc = "0.2.1"

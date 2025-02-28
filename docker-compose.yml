@@ -1,0 +1,23 @@
+# development
+
+name: hiv-splicing
+services:
+  hiv-splicing:
+    platform: linux/amd64
+    #platform: linux/amd64
+    image: rust:1.85-slim
+    stdin_open: true
+    tty: true
+    # ports:
+    #   - 8180:8181
+    container_name: hiv-splicing
+    volumes:
+      - ".:/app"
+      - /app/target
+    # network_mode: host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: ["sleep", "infinity"]
+    working_dir: /app

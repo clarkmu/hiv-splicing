@@ -1,0 +1,27 @@
+
+
+
+Separate Random Reverse, Common K-mer DeG:
+
+for i in `ls *_L001_R1_001.fastq | sed 's/_L001_R1_001.fastq//'`; do echo sbatch -p general --mail-type=ALL  --mail-user=clarkmu@email.unc.edu  -t 00-00:30:00  --mem=5g -n 1  -J Sep-$i -o $i.out  -e $i.err  --wrap=\"ruby SeparateRandomReversePlusCommonKmerDeG_NL4_3.rb "$i"_L001_R1_001.fastq  "$i"_L001_R2_001.fastq\" >> slurm_jobs_SeparateCombinedRFiles; done
+
+
+
+
+
+-------
+
+
+Category sort (for random reverse primer:
+
+for i in `ls *_L001_R1_001.fastq_RR_R1.fastq | sed 's/_L001_R1_001.fastq_RR_R1.fastq//'`; do echo sbatch -p general --mail-type=ALL  --mail-user=clarkmu@email.unc.edu  -t 00-02:30:00  --mem=5g -n 1  -J RR-$i -o $i.out  -e $i.err  --wrap=\"ruby 2024_01_CatagorySortRR_NL4-3_Cryptics.rb "$i"_L001_R1_001.fastq_RR_R1.fastq  "$i"_L001_R2_001.fastq_RR_R2.fastq\" >> slurm_jobs_CategorySort; done
+
+
+
+
+
+
+
+FOR COMMON K-MER
+
+for i in `ls  *_L001_R1_001.fastq_CommK_R1.fastq  | sed 's/_L001_R1_001.fastq_CommK_R1.fastq//'`; do echo sbatch -p general --mail-type=ALL  --mail-user=clarkmu@email.unc.edu  -t 00-02:00:00  --mem=5g -n 1  -J commK-$i -o commK-$i.out  -e commK-$i.err  --wrap=\"ruby 2023_06_RNAseq_sort_NL4-3_CommonKmerNested.rb "$i"_L001_R1_001.fastq_CommK_R1.fastq  "$i"_L001_R2_001.fastq_CommK_R2.fastq\" >> slurm_jobs_commonK_idx_fp_allTranscripts; done
